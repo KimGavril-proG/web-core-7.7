@@ -1,0 +1,128 @@
+@font-face {
+    font-family: 'Inter 18pt';
+    src: local('Inter 18pt Regular'), local('Inter18pt-Regular'),
+        url('./fonts/Inter18pt-Regular.woff2') format('woff2'),
+        url('./fonts/Inter18pt-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter 18pt';
+    src: local('Inter 18pt Bold'), local('Inter18pt-Bold'),
+        url('./fonts/Inter18pt-Bold.woff2') format('woff2'),
+        url('./fonts/Inter18pt-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Базовые стили */
+* { 
+  box-sizing: border-box; 
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Контент страницы */
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.site-header {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.section p {
+  margin: 0 0 16px;
+}
+
+.section code {
+  background: #f0f0f0;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+/* Заголовок секции */
+.section h2 {
+  margin: 0 0 16px;
+  font-size: 20px;
+  color: #555;
+}
+
+/* Создайте стили для модального окна согласно требованиям */
+.modal {
+    /* display: flex; */
+    position: fixed;
+    /* width: 100%;
+    height: 120px; */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    font-family: 'Inter 18pt', sans-serif;
+    /* font-size: 16px; */
+    z-index: 1000;
+}
+
+.modal-backdrop {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(1px);
+  z-index: 1;
+}
+
+.modal-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin: 0 30px;
+  padding: 0 30px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  border: 5px solid transparent; /* Если свойство border: 5px solid; оставить без указания цвета, рамка будет цвета шрифта. По спецификации CSS, если цвет рамки не задан, браузер автоматически красит её в цвет текста (в нашем случае — в aqua). Чтобы рамка-градиент сработала (стала видна) нужно сделать рамку прозрачной: border: 5px solid transparent; */
+  border-radius: 15px;
+  /* border-image: linear-gradient(green, red), linear-gradient(yellow, green); */ /* border-image ломает всё: Мы оставили строку border-image:.... Как только браузер видит это свойство, он автоматически отключает border-radius. Её нужно полностью удалить если мы хотим, чтобы рамка была градиентной. */
+   background-image: linear-gradient(to right, blue, red), linear-gradient(yellow,green); /* Обязательно пишем полностью background-image: (а не просто сокращённо background:) и перечисляем оба градиента, 1-й слой: фон модалки, 2-й слой: фон рамки: background-image: linear-gradient(to right, blue, red), linear-gradient(yellow,green); Когда мы пишем просто background: linear-gradient(...), браузер обнуляет свойства background-clip и background-origin для этого градиента. Из-за этого желто-зелёный градиент рамки просто перекрывается сине-красным фоном. Разделение на два градиента внутри background-image решает эту проблему. */
+   background-origin: border-box;  /* Управляем тем, где эти слои отображаются */
+   background-clip: padding-box, border-box; /* Управляем тем, где эти слои отображаются */
+    color: aqua;
+    box-shadow: 10px 10px 15px rgba(125, 10, 15, 0.5);
+    /* box-sizing: border-box; */
+  z-index: 2;
+}
+
+.modal-content > h2 {
+  margin-bottom: 0px;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 30px;
+  letter-spacing: 0.3px;
+}
