@@ -72,8 +72,10 @@ body {
 
 /* Создайте стили для модального окна согласно требованиям */
 .modal {
-    /* display: flex; */
+    display: flex;
     position: fixed;
+    align-items: center;
+    justify-content: center;
     /* width: 100%;
     height: 120px; */
     top: 0;
